@@ -1,0 +1,29 @@
+{
+  "name": "mean-app-project",
+  "version": "1.0.0",
+  "description": "MEAN STACK with Angular2",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oscar840218/MEAN-STACK-ANGULAR2-TRAINING.git"
+  },
+  "keywords": [
+    "MEAN",
+    "STACK",
+    "Angular2",
+    "App"
+  ],
+  "author": "OscarChen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oscar840218/MEAN-STACK-ANGULAR2-TRAINING/issues"
+  },
+  "homepage": "https://github.com/Oscar840218/MEAN-STACK-ANGULAR2-TRAINING#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongoose": "^4.10.7"
+  }
+}
