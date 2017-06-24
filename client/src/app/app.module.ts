@@ -11,6 +11,10 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { HomeComponent } from './component/home/home.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
+import { LoginComponent } from './component/login/login.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
 
 @NgModule({
   declarations: [
@@ -18,13 +22,16 @@ import { RegisterComponent } from './component/register/register.component';
     NavbarComponent,
     HomeComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FlashMessagesModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
