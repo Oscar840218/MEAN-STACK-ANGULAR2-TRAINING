@@ -1,0 +1,121 @@
+<h1 class="page-header">Blog Feed</h1>
+
+<div class="row show-hide-message" *ngIf="message && newPost">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
+<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost" (click)="newBlogForm()">
+  New Post
+</button>
+<button [disabled]="loadingBlogs" type="button" name="button" class="btn btn-default" *ngIf="!newPost" (click)="reloadBlogs()">
+  <span class="glyphicon glyphicon-repeat"></span>
+  &nbsp; &nbsp; Reload
+</button>
+
+<br/>
+<br/>
+
+<!--New Blog Form-->
+<form [formGroup]="form" name="blogForm" (submit)="onBlogSubmit()" *ngIf="newPost">
+   <!-- Title Input -->
+  <div class="form-group">
+    <label for="title">Title</label>
+    <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
+      <input type="text" name="title" class="form-control" placeholder="*Blog Title" autocomplete="off" formControlName="title" />
+      <ul class="help-block">
+        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">This field is required.</li>
+        <li *ngIf="(form.controls.title.dirty && form.controls.title.errors?.minlength) || (form.controls.title.dirty && form.controls.title.errors?.maxlength)">Max length: 50, Min length: 5</li>
+        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.alphaNumericValidation">Must be a letter or number</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Body Input -->
+  <div class="form-group">
+    <label for="body">Body</label>
+    <div [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.dirty && form.controls.body.errors}">
+      <textarea name="body" rows="8" cols="80" placeholder="*Body" class="form-control" formControlName="body"></textarea>
+      <ul class="help-block">
+        <li *ngIf="form.controls.body.dirty && form.controls.body.errors?.required">This field is required.</li>
+        <li *ngIf="(form.controls.body.dirty && form.controls.body.errors?.minlength) || (form.controls.body.dirty && form.controls.body.errors?.maxlength)">Max length: 500, Min length: 5</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Go Back Button -->
+  <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn btn-warning">Go Back</button>
+  <!-- Submit Button -->
+  <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn btn-success">Submit</button>
+
+</form>
+<!---->
+
+
+<div *ngIf="!newPost">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Post Title</h3>
+    </div>
+    <div class="panel-body">
+      There are content in the article
+    </div>
+    <!-- Start Footer -->
+    <div class="panel-footer">
+      <p><strong>Posted by: </strong>Oscar</p>
+      <br/>
+      <p><strong>Date: </strong>June 20, 2017</p>
+      <br/>
+      <div>
+        <p><strong>Likes: </strong>25</p>
+        <br/>
+        <p><strong>Dislikes: </strong>20</p>
+        <br/>
+      </div>
+      <a href="#"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
+      <a href="#"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a>
+      <!-- Likes Dropdown -->
+      <div class="dropdown">
+        <button type="button" name=button class="btn btn-sm btn-success">
+          <span class="glyphicon glyphicon-thumbs-up">&nbsp;</span>
+          Likes:21
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Tim</a>
+          <a href="#">Cindy</a>
+          <a href="#">Jeffery</a>
+        </div>
+      </div>
+      <!-- Dislikes Dropdown -->
+      <div class="dropdown">
+        <button type="button" name=button class="btn btn-sm btn-success">
+          <span class="glyphicon glyphicon-thumbs-down">&nbsp;</span>
+          Dislikes:6
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Stella</a>
+          <a href="#">Jim</a>
+        </div>
+      </div>
+    </div>
+    <!-- End Footer -->
+    <ul class="list-group">
+      <li class="list-group-item">
+        <button type="button" name="button" 
+                class="btn btn-sm btn-danger" (click)="draftComment()">
+                Post Comment
+        </button>
+        <br/>
+        <!--<form>
+          <textarea name="comment" rows="10" cols="30" class="form-control"></textarea>
+          <button type="button" name="button" class="btn btn-sm btn-info">Submit Post</button>
+          <button type="button" name="button" class="btn btn-sm btn-danger">Cancel</button>
+        </form>-->
+      </li>
+    </ul>
+
+
+  </div>
+
+</div>
