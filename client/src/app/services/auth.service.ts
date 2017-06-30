@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   checkEmail(email) {
-    return this.http.get('http://localhost:8080/authentication/checkEmail/' + email).map(res => res.json());
+    return this.http.get(this.domain+'authentication/checkEmail/' + email).map(res => res.json());
   }
 
   login(user) {
@@ -59,7 +59,7 @@ export class AuthService {
 
   getProfile() {
     this.createAuthenticationHeaders();
-    return this.http.get(this.domain + 'authentication/profile', this.options).map(res => res.json());
+    return this.http.get(this.domain+'authentication/profile', this.options).map(res => res.json());
   }
 
   loggedIn() {
