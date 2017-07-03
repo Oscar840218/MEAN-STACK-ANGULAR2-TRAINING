@@ -5,6 +5,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegisterComponent } from './component/register/register.component';
 import { LoginComponent } from './component/login/login.component';
 import { ProfileComponent } from './component/profile/profile.component';
+import { PublicProfileComponent } from './component/public-profile/public-profile.component';
 import { BlogComponent } from './component/blog/blog.component';
 import { EditBlogComponent } from './component/blog/edit-blog/edit-blog.component';
 import { DeleteBlogComponent } from './component/blog/delete-blog/delete-blog.component';
@@ -31,6 +32,11 @@ const appRoutes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user/:username',
+    component: PublicProfileComponent,
     canActivate: [AuthGuard]
   },
   {
